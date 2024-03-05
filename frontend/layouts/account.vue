@@ -8,7 +8,7 @@
         <div>Profile</div>
       </div>
     </div>
-    <div class=" w-full">
+    <div class=" w-full md:pt-20">
       <slot></slot>
     </div>
   </div>
