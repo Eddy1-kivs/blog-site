@@ -1,4 +1,3 @@
-# models.py
 import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -8,7 +7,7 @@ from django.utils import timezone
 class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     profile_image = models.ImageField(
-        upload_to='profile_images/', blank=True, null=True)
+        upload_to='profile_images/', default='profile_images/profile.jpg', blank=True, null=True)
     bio = models.TextField(blank=True)
     about = models.TextField(blank=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
@@ -74,7 +73,9 @@ class Comment(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'{self.user.username} - {self.text}'
+        return f'{self.user.username} ({self.user.profile_image.url}) - {self.text}'
+
+
 
 
 class Like(models.Model):

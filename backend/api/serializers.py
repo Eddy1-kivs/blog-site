@@ -88,12 +88,17 @@ class RelatedBlogByCategorySerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'pub_date']
 
 
+from rest_framework import serializers
+from .models import Comment
+
 class CommentSerializer(serializers.ModelSerializer):
+    user_username = serializers.ReadOnlyField(source='user.username')
+    user_profile_image = serializers.ImageField(source='user.profile_image', read_only=True)
+
     class Meta:
         model = Comment
-        fields = ['id', 'user', 'text', 'pub_date']
-        read_only_fields = ['id', 'user', 'pub_date']
-
+        fields = ['id', 'user', 'user_username', 'user_profile_image', 'text', 'pub_date']
+        read_only_fields = ['id', 'user', 'user_username', 'user_profile_image', 'pub_date']
 
 class CommentCreateSerializer(serializers.Serializer):
     text = serializers.CharField()

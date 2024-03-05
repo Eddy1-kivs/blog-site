@@ -142,6 +142,8 @@ def blog_detail(request, blog_id):
     blog = get_object_or_404(Blog, id=blog_id)
     serializer = BlogSerializer(blog, context={'request': request})
     serialized_data = serializer.data
+
+    # Include related blogs by author and category as before
     related_blogs_by_author = Blog.objects.filter(
         user=blog.user).exclude(id=blog_id)[:3]
     related_by_author_serializer = RelatedBlogByAuthorSerializer(
@@ -153,7 +155,13 @@ def blog_detail(request, blog_id):
     serialized_data['related_by_author'] = related_by_author_serializer.data
     serialized_data['related_by_category'] = related_by_category_serializer.data
 
+    # Include comments for the blog
+    comments = Comment.objects.filter(blog=blog)
+    comment_serializer = CommentSerializer(comments, many=True)
+    serialized_data['comments'] = comment_serializer.data
+
     return Response(serialized_data)
+
 
 
 
