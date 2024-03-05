@@ -12,6 +12,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.17",
     "nuxt": "^3.9.3",
+    "nuxt-tiptap-editor": "^1.1.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "vue": "^3.4.14",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.12.3",
+    "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.6.7",
     "jwt-decode": "^4.0.0"
   }

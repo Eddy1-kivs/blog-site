@@ -1,28 +1,20 @@
 <template>
-  <div class="pt-10 flex w-full flex-col place-items-center">
+  <div class="pt-10 flex w-full flex-col place-items-center   ">
     <div class="pb-10">
       <AccountProfileImage></AccountProfileImage>
     </div>
 
-    <div class="w-full">
+    <div class="w-full ">
       <div class="register-container">
-        <!-- <h2 class="pb-10"></h2> -->
         <form>
           <div class="text-xs text-red-600 text-center">{{ offlineText }}</div>
           <!-- {{ form }} -->
           <div class="form-group">
             <div for="username" class="w-full text-start">About:</div>
 
-            <textarea
-              class="input-field"
-              id="about"
-              v-model="form.about"
-            ></textarea>
+            <textarea class="input-field" id="about" v-model="form.about"></textarea>
 
-            <div
-              v-if="errors.about"
-              class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start"
-            >
+            <div v-if="errors.about" class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
               <div v-for="(error, index) in errors.about" :key="index">
                 {{ error }}
               </div>
@@ -32,16 +24,9 @@
           <div class="form-group">
             <div for="username" class="w-full text-start">Bio:</div>
 
-            <textarea
-              class="input-field"
-              id="bio"
-              v-model="form['bio']"
-            ></textarea>
+            <textarea class="input-field" id="bio" v-model="form['bio']"></textarea>
 
-            <div
-              v-if="errors.bio"
-              class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start"
-            >
+            <div v-if="errors.bio" class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
               <div v-for="(error, index) in errors.bio" :key="index">
                 {{ error }}
               </div>
@@ -50,16 +35,8 @@
 
           <div class="form-group">
             <div for="username" class="w-full text-start">Username:</div>
-            <input
-              type="text"
-              class="input-field"
-              id="username"
-              v-model="form.first_name"
-            />
-            <div
-              v-if="errors.first_name"
-              class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start"
-            >
+            <input type="text" class="input-field" id="username" v-model="form.first_name" />
+            <div v-if="errors.first_name" class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
               <div v-for="(error, index) in errors.first_name" :key="index">
                 {{ error }}
               </div>
@@ -68,16 +45,8 @@
 
           <div class="form-group">
             <div for="username" class="w-full text-start">Last name:</div>
-            <input
-              type="text"
-              class="input-field"
-              id="username"
-              v-model="form.first_name"
-            />
-            <div
-              v-if="errors.first_name"
-              class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start"
-            >
+            <input type="text" class="input-field" id="username" v-model="form.first_name" />
+            <div v-if="errors.first_name" class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
               <div v-for="(error, index) in errors.first_name" :key="index">
                 {{ error }}
               </div>
@@ -86,16 +55,8 @@
 
           <div class="form-group">
             <div for="username" class="w-full text-start">Username:</div>
-            <input
-              type="text"
-              class="input-field"
-              id="username"
-              v-model="form.email"
-            />
-            <div
-              v-if="errors.email"
-              class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start"
-            >
+            <input type="text" class="input-field" id="username" v-model="form.email" />
+            <div v-if="errors.email" class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
               <div v-for="(error, index) in errors.email" :key="index">
                 {{ error }}
               </div>
@@ -116,6 +77,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import axios from "axios";
 
@@ -140,7 +102,7 @@ watch(user, (newValue) => {
 
 const submitForm = () => {
   axios
-    .post("/user/update/", form.value)
+    .put("/user/update/", form.value)
     .then((responsee) => {
       console.log(response.data);
     })
