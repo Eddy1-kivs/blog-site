@@ -26,6 +26,11 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
+
+  tiptap: {
+    prefix: "Tiptap", //prefix for Tiptap imports, composables not included
+  },
+
   runtimeConfig: {
     public: {
       baseURL: "http://localhost:8000",
