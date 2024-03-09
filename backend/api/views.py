@@ -197,7 +197,7 @@ def add_comment(request, blog_id):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+ 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def like_blog(request, blog_id):
