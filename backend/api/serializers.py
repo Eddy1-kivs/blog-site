@@ -94,11 +94,16 @@ from .models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     user_username = serializers.ReadOnlyField(source='user.username')
     user_profile_image = serializers.ImageField(source='user.profile_image', read_only=True)
+    pub_date = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = ['id', 'user', 'user_username', 'user_profile_image', 'text', 'pub_date']
         read_only_fields = ['id', 'user', 'user_username', 'user_profile_image', 'pub_date']
+    def get_pub_date(self, obj):  # Change the method name to 'get_pub_date'
+        formatted_date = obj.pub_date.strftime("%B %d, %Y")
+        formatted_time = obj.pub_date.strftime("%I:%M %p")
+        return f"{formatted_date} at {formatted_time}"
 
 class CommentCreateSerializer(serializers.Serializer):
     text = serializers.CharField()

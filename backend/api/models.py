@@ -7,7 +7,7 @@ from django.utils import timezone
 class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     profile_image = models.ImageField(
-        upload_to='profile_images/', default='profile_images/profile.jpg', blank=True, null=True)
+        upload_to='profile_images/', default='profile_images/profile_DAuTrlx.jpg', blank=True, null=True)
     bio = models.TextField(blank=True)
     about = models.TextField(blank=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)

@@ -188,8 +188,12 @@ def add_comment(request, blog_id):
     if serializer.is_valid():
         text = serializer.validated_data['text']
         comment = Comment.objects.create(blog=blog, user=user, text=text)
-        response_serializer = CommentSerializer(comment)
-        return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+
+        # Retrieve all comments for the blog, including the new one
+        comments = Comment.objects.filter(blog=blog)
+        comment_serializer = CommentSerializer(comments, many=True)
+
+        return Response({'new_comment': CommentSerializer(comment).data, 'all_comments': comment_serializer.data}, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
