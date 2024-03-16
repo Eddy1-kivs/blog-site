@@ -14,6 +14,7 @@
             <div class=" pt-3 flex justify-end">
                 <button class="register-button " type="button" @click="submitForm()">
                     Submit
+
                 </button>
             </div>hh
         </div>
