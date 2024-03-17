@@ -52,7 +52,8 @@
 
                 <div>
                     <div class=" text-start" for="">Content</div>
-                    <QuillEditor theme="snow" v-model="form.content" />
+                    {{ form }}
+                    <QuillEditor theme="snow" v-model:content="form.content" />
                     <div v-if="formErrors.content"
                         class="inline-flex flex-col gap-y-2 text-xs mt-2 text-red-600 text-start">
                         <div v-for="(error, index) in formErrors.content" :key="index">
