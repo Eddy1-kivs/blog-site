@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Blog, Dislike, Like, Comment, CustomUser
+from .models import Blog, Dislike, Like, Comment, CustomUser, Category
 
 User = get_user_model()
 
@@ -121,3 +121,8 @@ class DislikeSerializer(serializers.ModelSerializer):
         model = Dislike
         fields = ['id', 'user', 'blog']
         read_only_fields = ['id', 'user', 'blog']
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']

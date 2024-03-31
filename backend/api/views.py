@@ -3,8 +3,8 @@ from django.db import IntegrityError
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .serializers import UserSerializer, BlogSerializer, LoginSerializer, UserProfileSerializer, UserProfileUpdateSerializer, RelatedBlogByAuthorSerializer, RelatedBlogByCategorySerializer, CommentSerializer, CommentCreateSerializer, LikeSerializer, DislikeSerializer
-from .models import CustomUser, Blog, Category, Dislike, Like, Comment
+from .serializers import UserSerializer, BlogSerializer, LoginSerializer, UserProfileSerializer, UserProfileUpdateSerializer, RelatedBlogByAuthorSerializer, RelatedBlogByCategorySerializer, CommentSerializer, CommentCreateSerializer, LikeSerializer, DislikeSerializer, CategorySerializer
+from .models import CustomUser, Blog, Category, Dislike, Like, Comment, Category
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -120,6 +120,16 @@ def all_blogs(request):
         result_page, many=True, context={'request': request})
     return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+@authentication_classes([])  
+@permission_classes([]) 
+def all_categories(request):
+    """
+    Retrieve all categories.
+    """
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

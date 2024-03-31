@@ -75,7 +75,7 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.user.username} ({self.user.profile_image.url}) - {self.text}'
 
-
+ 
 
 
 class Like(models.Model):
