@@ -10,3 +10,6 @@ export const useUser = () =>
       about: "",
     };
   });
+
+
+  export const useCategories = ()=>useState('categories', ()=>[])

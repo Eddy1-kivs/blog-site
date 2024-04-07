@@ -1,6 +1,10 @@
 <template>
     <div class="px-2 bg-[#fde7be] py-2 min-h-screen relative text-gray-900 md:px-20">
-        <HomeNavbar></HomeNavbar>
+        <!-- <HomeNavbar></HomeNavbar> -->
+        <div class="pt-4">
+
+            {{ categories.filter((item) => item.id == route.params.id)[0].name }}
+        </div>
         <div class="w-full grid pt-10 gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             <div class="rounded-sm overflow-hidden" v-for="(item, index) in articles" :key="index">
                 <NuxtLink :to="'/article/' + item.id">
@@ -17,10 +21,15 @@
 </template>
 <script setup>
 import axios from "axios";
+import { useCategories } from '~/composables/states';
 
 definePageMeta({
     layout: "font-layout",
 });
+
+const route = useRoute()
+
+const categories = useCategories()
 
 const articlesData = ref({});
 const articles = ref([]);
@@ -44,9 +53,7 @@ const handleFetch = () => {
     }
 };
 
-const handleGetCategories = () => {
-    axios.get('categories')
-}
+
 
 const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {

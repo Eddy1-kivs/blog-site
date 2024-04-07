@@ -25,9 +25,12 @@
 
 <script setup>
 import axios from 'axios';
+import { useCategories } from '~/composables/states';
 
 const selectedTab = ref("HOME");
-const categories = ref([]);
+const categories = useCategories();
+
+
 
 const setCategories = () => {
   axios.get('/all_categories/').then(response => {
