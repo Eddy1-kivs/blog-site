@@ -13,7 +13,22 @@
                 </NuxtLink>
             </div>
         </div>
+
+        <div v-if="articles.length == 0" class="  flex justify-center w-full">
+            <div>
+
+                <img src="/images/empty2.png" alt="">
+                <div class=" text-gray-500 pt-8 ">
+                    Sorry there is nothing here
+                </div>
+
+
+            </div>
+        </div>
+
         <SharedFooter></SharedFooter>
+
+
     </div>
 </template>
 <script setup>
