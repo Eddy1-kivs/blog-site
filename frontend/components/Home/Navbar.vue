@@ -11,8 +11,8 @@
 
     <div class="flex flex-col md:flex-row text-black font-extrabold text-2xl justify-between cursor-pointer">
 
-      <nuxt-link to="/auth/login" class="nav-link text-sm" v-for="item, index in categories" :key="index"
-        @click="selectTab(item.name)"> {{ item.name }} </nuxt-link>
+      <nuxt-link :to="`/categories/${item['id']}`" class="nav-link text-sm" v-for="item, index in categories"
+        :key="index" @click="selectTab(item.name)"> {{ item.name }} </nuxt-link>
 
 
     </div>
