@@ -1,8 +1,6 @@
 <template>
     <div class="px-2 bg-[#fde7be] py-2 min-h-screen relative text-gray-900 md:px-20">
-        <!-- <HomeNavbar></HomeNavbar> -->
         <div class="pt-4">
-
             {{ categories.filter((item) => item.id == route.params.id)[0].name }}
         </div>
         <div class="w-full grid pt-10 gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -13,7 +11,6 @@
                         {{ item.title }}
                     </div>
                 </NuxtLink>
-                <!-- {{ articles }} -->
             </div>
         </div>
         <SharedFooter></SharedFooter>
@@ -37,7 +34,7 @@ const articles = ref([]);
 const previousUrl = ref(null);
 
 const handleFetch = () => {
-    let url = articlesData.value.next ?? "all_blogs/";
+    let url = articlesData.value.next ?? "category/" + route.params.id;
     if (url != previousUrl.value) {
         previousUrl.value = url;
 
