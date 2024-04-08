@@ -4,7 +4,7 @@
     <div class="w-full grid pt-10 gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       <div class="rounded-sm overflow-hidden" v-for="(item, index) in articles" :key="index">
         <NuxtLink :to="'/article/' + item.id">
-          <img class="w-full rounded-sm" :src="item.cover_photo" alt="" />
+          <img class="w-full h-80 object-cover rounded-sm" :src="item.cover_photo" alt="" />
           <div class="pt-3">
             {{ item.title }}
           </div>
@@ -52,7 +52,7 @@ const handleScroll = () => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
     handleFetch();
   }
-};
+}; 
 
 onMounted(() => {
   handleFetch();

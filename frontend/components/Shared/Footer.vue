@@ -1,11 +1,11 @@
 <template>
-  <footer class="rounded-lg absolute bottom-0">
-    <div class="mx-auto p-4  ">
-      <span class="text-sm sm:text-center">© {{ new Date().getFullYear() }}
+  <footer class="rounded-lg mt-10">
+    <div class="p-4 flex flex-col items-center justify-center">
+      <span class="text-sm sm:text-center mb-3">© {{ new Date().getFullYear() }}
         <a href="https://flowbite.com/" class="hover:underline">{{ useRuntimeConfig().public.appName }}™</a>. All Rights
         Reserved.
       </span>
-      <ul class="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
+      <ul class="flex flex-wrap items-center text-sm font-medium">
         <li>
           <a href="#" class="hover:underline me-4 md:me-6">About</a>
         </li>
@@ -22,3 +22,12 @@
     </div>
   </footer>
 </template>
+
+<style>
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+</style>

@@ -1,6 +1,7 @@
 <template>
   <div class="press-start-text h-full flex flex-col gap-y-4">
-    <img src="/image1.jpeg" class="w-full h-32 rounded-b-lg" alt="" />
+    <img src="/image1.jpeg" class="w-full h-60 object-fit rounded-b-lg" alt="" />
+
     <div class="flex flex-col md:flex-row text-black font-extrabold text-2xl justify-between cursor-pointer">
       <nuxt-link to="/" class="nav-link" @click="selectTab('HOME')">HOME</nuxt-link>
       <nuxt-link to="/blog" class="nav-link" @click="selectTab('BLOG')">BLOG</nuxt-link>
@@ -20,7 +21,7 @@
 
 
     </div>
-    <img src="/image1.jpeg" class="w-full rounded-lg h-32" alt="" />
+    <img src="/image2.jpeg" class="w-full h-80 object-fit rounded-b-lg" alt="" />
   </div>
 
 
